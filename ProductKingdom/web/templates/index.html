@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ProductKingdom | 皇帝上朝</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="palace-header">
+    <section class="crest">
+      <div class="dragon">龍</div>
+      <div class="seal">万机<br>之主</div>
+    </section>
+    <section class="title-block">
+      <span>ProductKingdom</span>
+      <h1>皇帝上朝 · 批阅奏折</h1>
+      <p>基于 LangGraph 的多 Agent 协作产品开发系统</p>
+    </section>
+    <section class="stats-panel">
+      <div><b>当前阶段</b><span id="statStage">尚未下旨</span></div>
+      <div><b>驳回次数</b><span id="statRevisions">0 / 3</span></div>
+      <div><b>已完成阶段</b><span id="statCompleted">0 / 5</span></div>
+    </section>
+  </header>
+
+  <main class="court">
+    <section class="edict-panel">
+      <div class="scroll-cap left"></div>
+      <div class="edict-inner">
+        <h2>皇帝下旨</h2>
+        <p>请陛下描述欲打造之产品，众臣定当竭力完成。</p>
+        <textarea id="requirement" placeholder="例如：朕欲打造一款面向大学生的 AI 学习平台，可自动整理课堂笔记，并生成个性化复习计划……"></textarea>
+        <button id="startBtn" class="imperial-btn">宣众臣入殿，开始上朝</button>
+        <small>下旨后，群臣将依次启奏；陛下每次批阅后才会进入下一阶段。</small>
+      </div>
+      <div class="scroll-cap right"></div>
+    </section>
+
+    <section class="workspace">
+      <aside class="flow-panel panel">
+        <h2>上朝流程</h2>
+        <ol id="stageList" class="stage-list">
+          <li data-stage="pm"><span>1</span><img src="/static/minister.svg" alt=""><b>产品经理（PM）</b><em>启奏：产品需求文档（PRD）</em><strong>待启奏</strong></li>
+          <li data-stage="architect"><span>2</span><img src="/static/minister.svg" alt=""><b>架构师（Architect）</b><em>启奏：系统架构设计</em><strong>待启奏</strong></li>
+          <li data-stage="backend"><span>3</span><img src="/static/minister.svg" alt=""><b>后端开发（Backend）</b><em>启奏：接口设计与数据模型</em><strong>待启奏</strong></li>
+          <li data-stage="frontend"><span>4</span><img src="/static/minister.svg" alt=""><b>前端开发（Frontend）</b><em>启奏：页面设计与交互方案</em><strong>待启奏</strong></li>
+          <li data-stage="qa"><span>5</span><img src="/static/minister.svg" alt=""><b>测试工程师（QA）</b><em>启奏：测试计划与用例</em><strong>待启奏</strong></li>
+        </ol>
+        <div class="motto">万机之主 · 运筹帷幄 · 决胜千里</div>
+      </aside>
+
+      <section class="draft-panel panel">
+        <h2 id="draftTitle">当前奏折</h2>
+        <p id="draftIntro">请先下旨，奏折将在此呈上。</p>
+        <article id="draft" class="draft-paper empty">静候圣旨。</article>
+        <button id="summaryBtn" class="ghost-btn" disabled>查看完整奏折</button>
+      </section>
+
+      <aside class="review-panel panel">
+        <h2>皇上朱批</h2>
+        <div class="edict-label">请陛下批阅此奏折</div>
+        <textarea id="feedback" maxlength="500" placeholder="请输入朱批意见……"></textarea>
+        <div class="counter"><span id="feedbackCount">0</span> / 500</div>
+        <div class="tips">
+          <b>批阅说明</b>
+          <p>点击“准奏”表示通过。</p>
+          <p>填写意见后点击“驳回”，大臣会据此修改。</p>
+          <p>驳回达到上限后，此阶段将强制通过。</p>
+        </div>
+        <div class="review-actions">
+          <button id="approveBtn" class="approve" disabled>准奏（通过）</button>
+          <button id="rejectBtn" class="reject" disabled>驳回（批改）</button>
+        </div>
+        <div class="artifact-cabinet">
+          <div class="jade-row">
+            <div class="jade-seal">玉玺印信</div>
+            <button id="sourceBtn" class="artifact-btn source" disabled>源代码</button>
+          </div>
+          <div class="artifact-actions">
+            <button id="useBtn" class="artifact-btn use" disabled>在线使用</button>
+            <button id="downloadBtn" class="artifact-btn download" disabled>下载</button>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <dialog id="summaryDialog">
+    <button id="closeSummary" class="close-btn">×</button>
+    <h2>退朝汇总</h2>
+    <div id="summaryContent"></div>
+  </dialog>
+
+  <dialog id="sourceDialog" class="source-dialog">
+    <button id="closeSource" class="close-btn">×</button>
+    <h2>产品源代码</h2>
+    <p id="sourceFileName">index.html</p>
+    <pre id="sourceCode"></pre>
+  </dialog>
+
+  <div id="toast" class="toast"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="minister">
+  <rect width="96" height="96" rx="16" fill="#ead9b8"/>
+  <path d="M30 82c3-18 9-27 18-27s15 9 18 27" fill="#413222"/>
+  <path d="M34 42c0-14 7-23 14-23s14 9 14 23c0 13-7 22-14 22s-14-9-14-22z" fill="#d5a86d"/>
+  <path d="M29 29h38l-8-11H37z" fill="#221913"/>
+  <path d="M38 18l10-10 10 10z" fill="#12100d"/>
+  <path d="M32 38c6-7 26-7 32 0-1-14-7-21-16-21s-15 7-16 21z" fill="#1e1712"/>
+  <path d="M39 52c6 5 12 5 18 0 0 9-18 9-18 0z" fill="#2a1d14"/>
+  <circle cx="41" cy="43" r="2" fill="#1d130e"/>
+  <circle cx="55" cy="43" r="2" fill="#1d130e"/>
+  <path d="M31 84h34l-5-18H36z" fill="#732916"/>
+  <path d="M20 84h56" stroke="#211711" stroke-width="5" stroke-linecap="round"/>
+</svg>
